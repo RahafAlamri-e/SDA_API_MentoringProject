@@ -30,6 +30,14 @@ public class T01_APIResponseValidation {
         void test01() {
             Response response = RestAssured.get("https://fakerestapi.azurewebsites.net/api/v1/Users");
 
+
+//            response
+//                    .then()
+//                    .statusCode(200)
+//                    .contentType("application/json")
+//                    .header("Server", "Kestrel")
+//                    .header("Transfer-Encoding", "chunked");
+
             int statusCode = response.getStatusCode();
             System.out.println("Status Code: " + statusCode);
             Assert.assertEquals(statusCode, 200);
@@ -40,7 +48,7 @@ public class T01_APIResponseValidation {
 
             String serverHeader = response.header("Server");
             System.out.println("Server Header: " + serverHeader);
-            Assert.assertTrue(response.header("Server").contains("Kestrel"));
+            Assert.assertEquals(response.header("Server"),"Kestrel");
 
             String transferEncoding = response.header("Transfer-Encoding");
             System.out.println("Transfer-Encoding: " + transferEncoding);
