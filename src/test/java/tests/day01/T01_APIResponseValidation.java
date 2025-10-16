@@ -5,7 +5,7 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class T02_APIResponseValidation {
+public class T01_APIResponseValidation {
 
         /*
         Task 3: Rest Assured - API Response Validation
