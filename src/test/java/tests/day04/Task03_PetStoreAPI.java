@@ -2,26 +2,37 @@ package tests.day04;
 
 import base_Urls.FakeStoreBaseUrl;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
-import java.io.IOException;
+import utilities.ObjectMapperUtils;
+
 import java.time.LocalDate;
 
 import static io.restassured.RestAssured.given;
 import static json_data.cartData.CART_BODY;
 import static org.testng.Assert.assertEquals;
 
-public class Task03_CreateCartJsonNode extends FakeStoreBaseUrl {
-    //Create a new shopping cart using the Fake Store API with JsonNode for dynamic payload handling.
-    //https://fakestoreapi.com/carts
+public class Task03_PetStoreAPI extends FakeStoreBaseUrl {
+    /*
+    Requirements:
+    Reference the API documentation at https://fakestoreapi.com/docs
+    Use JsonNode to create the request payload dynamically
+    Create a cart with properties like:
+    userId
+    date
+    products (array of product objects with productId and quantity)
+    Modify the JsonNode to add additional fields as needed
+    Send a POST request to the create cart endpoint
+    Assert that the response status code indicates success
+    Assert that the returned cart contains the expected data
+     */
 
     @Test
-    void C17_CreateCartJsonNodeTest() throws IOException {
+    void C17_petStoreAPITest() {
 
         //Prepare the payload
-        JsonNode payload = new ObjectMapper().readTree(CART_BODY);
+        JsonNode payload = ObjectMapperUtils.getJsonNode(CART_BODY);
         System.out.println("payload = " + payload);
 
         ((ObjectNode) payload).put("date", LocalDate.now().toString());
@@ -32,7 +43,7 @@ public class Task03_CreateCartJsonNode extends FakeStoreBaseUrl {
         response.prettyPrint();
 
         //Do assertion
-        JsonNode actualResponse = new ObjectMapper().readTree(response.asString());
+        JsonNode actualResponse = ObjectMapperUtils.getJsonNode(response.asString());
 
         assertEquals(response.statusCode(), 201);
         assertEquals(actualResponse.get("userId").intValue(), payload.get("userId").intValue());

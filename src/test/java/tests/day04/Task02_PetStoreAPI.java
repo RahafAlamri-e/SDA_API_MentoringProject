@@ -12,7 +12,15 @@ import static org.testng.Assert.assertEquals;
 
 public class Task02_PetStoreAPI extends PetStoreBaseUrl {
     /*
+        Requirements:
         Reference the API documentation at https://petstore.swagger.io/
+        Create a POJO class representing a Pet object with properties like:
+        id
+        name
+        category
+        photoUrls
+        status
+        tags
         Send a POST request to the create pet endpoint with your POJO as the body
         Assert that the response status code is successful (200 or 201)
         Assert that the returned pet object contains the data you sent
