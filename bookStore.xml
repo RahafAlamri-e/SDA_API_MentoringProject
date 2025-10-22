@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="/Users/mac/IdeaProjects/SDA_API_MentoringProject/src/test/java/tests/day05/Task02_BookstoreAPI">
+        <classes>
+            <class name="tests.day05.Task02_BookstoreAPI.R01_CreateUser"> </class>
+            <class name="tests.day05.Task02_BookstoreAPI.R02_GenerateToken"> </class>
+            <class name="tests.day05.Task02_BookstoreAPI.R03_GetAllBooks"> </class>
+            <class name="tests.day05.Task02_BookstoreAPI.R04_AssignBooksToUser"> </class>
+            <class name="tests.day05.Task02_BookstoreAPI.R05_GetUserInfo"> </class>
+        </classes>
+    </test>
+</suite>
